@@ -1,0 +1,62 @@
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-12 bg-danger text-white" style="text-align: center;">
+          <a class="navbar-brand col-12 p-2 ">
+              STUDENT LIST
+          </a>
+      </div> 
+    </div>
+    <div class="row">
+        <!-- <div class="col-12 p-2 bg-info text-white">          
+            {{departments.length}} Departments
+        </div> -->
+        <div class="col-6 p-2">
+            <button class="btn btn-outline-danger"  (click)="changeDepartment()">
+                 HOME
+            </button>
+            <button *ngFor="let dpt of departments" class="btn btn-outline-danger" style="margin-left: 20px;" (click)="changeDepartment(dpt)" 
+            [class.active]="dpt==selectedDepartment" >
+                {{dpt}}
+            </button>
+            
+        </div>
+        <div class="col-6 p-2">
+            <div class=" dropdown form-inline float-left">
+                <select class="form-control btn-outline-danger" [value]="studentsPerPage"(change)="changePageSize($event.target.value)" >
+                   
+                    <option value="3">3 per page</option>
+                    <option value="4">4 per page</option>
+                    <option value="5">5 per page</option>
+                    <option value="20">All</option>
+                </select>
+            </div>
+            <div class="btn-group float-right">
+                <button *ngFor="let page of pageNumbers" class="btn btn-outline-danger"  (click)="changePage(page)" [class.active]="page==selectedPage" >
+                  {{page}}
+                </button>
+            </div>
+        </div>
+       
+        
+        <div class="col-12  p-2 ">
+        <div class="col-6 p-2 btn bg-danger text-white "  >       
+           NAME
+        </div>
+        <div class=" col-6 p-2 btn bg-danger text-white " >       
+            ADDRESS
+        </div>
+        </div>
+        
+        <div class="col-6 p-2">
+           <div *ngFor="let student of students" class="card m-1 p-1 bg-light">
+             {{student.name}}
+           </div>
+        </div>
+        <div class="col-6 p-2">
+            <div *ngFor="let student of students" class="card m-1 p-1 bg-light">
+              {{student.address}}
+            </div>
+         </div>
+       
+     </div>
+</div>
